@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>Slideshowify - Fullscreen Demo</title>
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="js/jquery.transit.js"></script>
+  <script src="js/jquery.slideshowify.js"></script>
+</head>
+<body>
+  <div class="content">
+    <div class="ken-burns">
+      <div id="slider"/>
+    </div>
+  </div>
+  <script>
+  /* global $ */
+  $(function () {
+    $.slideshowify({
+      dataUrl: 'http://localhost:5000/landing/51043/slideshow.json',
+      dataType: 'json',
+      parentEl: '#slider',
+      aniSpeedMin: 50000, // shortest animation will be 3 seconds
+      aniSpeedMax: 8000, // longest animation will be 4 seconds
+      fadeInSpeed: 1500,
+      fadeOutSpeed: 1000,
+      transSpeed: 6000,
+      filterFn: function (imgs) { // sanitize or filter data
+        var fixedImgs = []
+        $.each(imgs, function (i, img) {
+          fixedImgs.push(img)
+        })
+        return fixedImgs
+      }
+    })
+  })
+  </script>
+</body>
+</html>
